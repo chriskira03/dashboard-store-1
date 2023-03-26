@@ -12,6 +12,8 @@ const Cards = () => {
 						imagen={produc.imagen}
 						descripcion={produc.descripcion}
 						precio={produc.precio}
+						id= {produc.id}
+						category={produc.category}
 					/>
 				</div>
 			))}

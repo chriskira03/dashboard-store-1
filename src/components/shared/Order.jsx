@@ -1,7 +1,11 @@
 import React from 'react';
+import { productos } from '../data/productos';
+import { useUserContext } from '../hooks/UserProvider';
 import Pedidos from './Pedidos';
 
 const Order = () => {
+	const { product } = useUserContext();
+
 	return (
 		<>
 			<div className="pt-6">
@@ -27,9 +31,15 @@ const Order = () => {
 				</div>
 			</div>
 			<hr></hr>
-            <div>
-                <Pedidos />
-            </div>
+			<div>
+				{product !== null ? (
+					product.map((producto) => {
+						return <Pedidos product={producto} />;
+					})
+				) : (
+					<p>hola</p>
+				)}
+			</div>
 		</>
 	);
 };
