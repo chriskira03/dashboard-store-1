@@ -7,29 +7,31 @@ import {
 	RiMailLine,
 	RiLogoutCircleRLine,
 } from 'react-icons/ri';
+import { Link, Route, Routes } from 'react-router-dom';
+import { Home } from '../../pages/Home';
+import { Menu } from '../../pages/Menu';
 
 const Sidebar = (props) => {
-	const {showMenu}=props;
+	const { showMenu } = props;
 	return (
 		<div className={`bg-tertiary  flex flex-col justify-between py-6 `}>
-			<div>
+			<nav>
 				<ul className="pl-4 ">
 					<li className="text-2xl uppercase font-bold text-blanco text-center my-5">
-						Logo
+						<Link to="/">home</Link>
 					</li>
 					<li className="bg-primary p-4 rounded-tl-xl flex justify-center">
-						<a
-							href="#"
-							className="bg-secondary text-blanco p-4 rounded-xl ">
+						<Link
+							className="bg-secondary text-blanco p-4 rounded-xl "
+							to="menu/">
 							<RiHome6Line className="text-2xl" />
-						</a>
+						</Link>
 					</li>
 					<li className="p-4 rounded-tl-xl flex justify-center group hover:bg-primary">
-						<a
-							href="#"
-							className="p-4 rounded-xl text-secondary group-hover:text-blanco group-hover:bg-secondary">
+						<Link className="p-4 rounded-xl text-secondary group-hover:text-blanco group-hover:bg-secondary"
+							to="new/">
 							<RiPercentLine className="text-2xl" />
-						</a>
+						</Link>
 					</li>
 					<li className="p-4 rounded-tl-xl flex justify-center group hover:bg-primary">
 						<a
@@ -46,7 +48,7 @@ const Sidebar = (props) => {
 						</a>
 					</li>
 				</ul>
-			</div>
+			</nav>
 			<div>
 				<ul className="pl-4">
 					<li className="p-4 rounded-tl-xl flex justify-center group hover:bg-primary">
@@ -58,6 +60,11 @@ const Sidebar = (props) => {
 					</li>
 				</ul>
 			</div>
+			{/* <Routes>
+				<Route path="/" element={<Home />} />
+				<Route path="menu" element={<Menu />} />
+				
+			</Routes> */}
 		</div>
 	);
 };

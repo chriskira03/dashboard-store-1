@@ -35,12 +35,21 @@ export const UserProvider = (props) => {
 			{ id, category, cantidad },
 		]);
 	}
+
+	function eliminarProducto(id, category) {
+		setProduct((prevProductos) => {
+			const nuevosProductos = prevProductos.filter(
+				(p) => !(p.id === id && p.category === category)
+			);
+			return nuevosProductos;
+		});
+	}
 	// useEffect(() => {
 	// 	console.log(product);
 	// }, [product]);
 
 	return (
-		<userContext.Provider value={{ actualizarProducto, product }}>
+		<userContext.Provider value={{ actualizarProducto, eliminarProducto, product }}>
 			{props.children}
 		</userContext.Provider>
 	);
