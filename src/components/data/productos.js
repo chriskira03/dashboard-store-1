@@ -1,10 +1,8 @@
-import { imagenes } from '../img/index.js';
-
 export const productos = {
 	costa: [
 		{
 			id: 1,
-			imagen: imagenes.comida1,
+			imagen: '',
 			nombre: 'comida',
 			descripcion: 'comida',
 			precio: '20.6',
@@ -12,7 +10,7 @@ export const productos = {
 		},
 		{
 			id: 2,
-			imagen: imagenes.comida2,
+			imagen: 'imagenes.comida2',
 			nombre: 'comida',
 			descripcion: 'comida',
 			precio: '20.6',
@@ -20,7 +18,7 @@ export const productos = {
 		},
 		{
 			id: 3,
-			imagen: imagenes.comida1,
+			imagen: 'imagenes.comida1',
 			nombre: 'comida',
 			descripcion: 'comida',
 			precio: '20.6',
@@ -28,7 +26,7 @@ export const productos = {
 		},
 		{
 			id: 4,
-			imagen: imagenes.comida2,
+			imagen: 'imagenes.comida2',
 			nombre: 'comida',
 			descripcion: 'comida',
 			precio: '20.6',
@@ -36,7 +34,7 @@ export const productos = {
 		},
 		{
 			id: 5,
-			imagen: imagenes.comida1,
+			imagen: 'imagenes.comida1',
 			nombre: 'comida',
 			descripcion: 'comida',
 			precio: '20.6',
@@ -44,7 +42,7 @@ export const productos = {
 		},
 		{
 			id: 6,
-			imagen: imagenes.comida2,
+			imagen: 'imagenes.comida2',
 			nombre: 'comida',
 			descripcion: 'comida',
 			precio: '20.6',
@@ -52,7 +50,7 @@ export const productos = {
 		},
 		{
 			id: 7,
-			imagen: imagenes.comida1,
+			imagen: 'imagenes.comida1',
 			nombre: 'comida',
 			descripcion: 'comida',
 			precio: '20.6',
@@ -60,7 +58,7 @@ export const productos = {
 		},
 		{
 			id: 8,
-			imagen: imagenes.comida2,
+			imagen: 'imagenes.comida2',
 			nombre: 'comida',
 			descripcion: 'comida',
 			precio: '20.6',
@@ -68,7 +66,7 @@ export const productos = {
 		},
 		{
 			id: 9,
-			imagen: imagenes.comida1,
+			imagen: 'imagenes.comida1',
 			nombre: 'comida',
 			descripcion: 'comida',
 			precio: '20.6',
@@ -76,7 +74,7 @@ export const productos = {
 		},
 		{
 			id: 10,
-			imagen: imagenes.comida2,
+			imagen: 'imagenes.comida2',
 			nombre: 'comida',
 			descripcion: 'comida',
 			precio: '20.6',
@@ -84,7 +82,7 @@ export const productos = {
 		},
 		{
 			id: 11,
-			imagen: imagenes.comida1,
+			imagen: 'imagenes.comida1',
 			nombre: 'comida',
 			descripcion: 'comida',
 			precio: '20.6',

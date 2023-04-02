@@ -2,14 +2,12 @@
 import React from 'react';
 import { RiCloseLine, RiDeleteBin6Line } from 'react-icons/ri';
 import { AiOutlineLine } from 'react-icons/ai';
-import { productos } from '../data/productos';
 import { useUserContext } from '../hooks/UserProvider';
 
 const Pedidos = ({ product }) => {
 	const { id, category, cantidad } = product;
-	const { costa } = productos;
 
-	const { actualizarProducto, eliminarProducto } = useUserContext();
+	const { actualizarProducto, eliminarProducto, platos } = useUserContext();
 
 	const actualizarResta = () => {
 		if (cantidad > 1) {
@@ -23,7 +21,7 @@ const Pedidos = ({ product }) => {
 	};
 	return (
 		<>
-			{costa
+			{platos
 				.filter(
 					(costa) => costa.id === id && costa.category === category
 				)
@@ -32,7 +30,7 @@ const Pedidos = ({ product }) => {
 						<div className="flex text-blanco px-1 py-4">
 							<img
 								src={costa.imagen}
-								className="max-w-10 max-h-10"
+								className="w-10 h-10 object-cover shadow-2xl rounded-full mx-2"
 							/>
 							<div className="max-w-[100px]">
 								<p className="truncate text-[14px]">

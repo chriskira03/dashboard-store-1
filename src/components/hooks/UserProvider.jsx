@@ -1,10 +1,8 @@
 import React, { Children, useEffect, useState } from 'react';
 import { useContext } from 'react';
-import { productos } from '../data/productos';
 import axios from 'axios';
 
 const userContext = React.createContext();
-
 
 export function useUserContext() {
 	return useContext(userContext);
@@ -12,21 +10,39 @@ export function useUserContext() {
 
 export const UserProvider = (props) => {
 	const url = 'http://localhost:3001/platos';
+
 	const [platos, setPlatos] = useState([]);
-	const listarEmpresas = () => {
+	const listarPlatos = () => {
 		axios.get(`${url}`).then((resp) => setPlatos(resp.data));
+	};
+	useEffect(() => {
+		listarPlatos();
+	}, []);
+
+	function añadirProducto(dato) {
+		axios.post(`${url}/`, dato).then((resp) => {
+			listarPlatos();
+		});
+	}
+
+	const actualizarProductos = (dato) => {
+		axios.put(`${url}/${dato.id}`, dato).then((resp) => {
+			listarPlatos();
+		});
+	};
+
+	const deleteProductos = (dato) => {
+		let confirmar = window.confirm(
+			`Desea eliminar la empresa: ${dato.nombre} cuya categoria es: ${dato.category}`
+		);
+		if (confirmar) {
+			axios.delete(`${url}/${dato.id}`).then((resp) => {
+				listarPlatos();
+			});
+		}
 	};
 
 	const [product, setProduct] = useState(null);
-
-	const { costa } = productos;
-
-	const [data, setData] = useState(costa);
-
-	function añadirProducto(dato) {
-		setData((prevProductos) => [...prevProductos, dato]);
-	}
-
 	function actualizarProducto(id, category, cantidad) {
 		if (product === null) {
 			setProduct([{ id, category, cantidad }]);
@@ -61,18 +77,17 @@ export const UserProvider = (props) => {
 			return nuevosProductos;
 		});
 	}
-	// useEffect(() => {
-	// 	console.log(product);
-	// }, [product]);
 
 	return (
 		<userContext.Provider
 			value={{
+				platos,
+				añadirProducto,
+				actualizarProductos,
+				deleteProductos,
 				actualizarProducto,
 				eliminarProducto,
 				product,
-				añadirProducto,
-				data,
 			}}>
 			{props.children}
 		</userContext.Provider>

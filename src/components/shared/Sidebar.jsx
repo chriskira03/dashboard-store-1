@@ -28,18 +28,20 @@ const Sidebar = (props) => {
 						</Link>
 					</li>
 					<li className="p-4 rounded-tl-xl flex justify-center group hover:bg-primary">
-						<Link className="p-4 rounded-xl text-secondary group-hover:text-blanco group-hover:bg-secondary"
+						<Link
+							className="p-4 rounded-xl text-secondary group-hover:text-blanco group-hover:bg-secondary"
 							to="new/">
 							<RiPercentLine className="text-2xl" />
 						</Link>
 					</li>
 					<li className="p-4 rounded-tl-xl flex justify-center group hover:bg-primary">
-						<a
-							href="#"
-							className="p-4 rounded-xl text-secondary group-hover:text-blanco group-hover:bg-secondary">
+						<Link
+							className="p-4 rounded-xl text-secondary group-hover:text-blanco group-hover:bg-secondary"
+							to="data-productos/">
 							<RiPieChartLine className="text-2xl" />
-						</a>
+						</Link>
 					</li>
+
 					<li className="p-4 rounded-tl-xl flex justify-center group hover:bg-primary">
 						<a
 							href="#"

@@ -1,36 +1,18 @@
 import React, { useState } from 'react';
 import { useUserContext } from '../components/hooks/UserProvider';
 import { AiOutlineLine } from 'react-icons/ai';
-const NewProduct = ({ handleClose }) => {
-	const [previewImagen, setPreviewImagen] = useState('');
+const UpdateProduct = ({ handleClose, variable }) => {
+	const [productoNuevo, setProductoNuevo] = useState(variable);
 
-	const [productoNuevo, setProductoNuevo] = useState({
-		nombre: '',
-		descripcion: '',
-		precio: '',
-		category: '',
-		imagen: '',
-	});
+	const { actualizarProductos } = useUserContext();
 
-	const { añadirProducto } = useUserContext();
-
-	const { nombre, precio, imagen, descripcion, category } = productoNuevo;
+	const { nombre, precio, imagen, descripcion, category, id } = productoNuevo;
+	const [previewImagen, setPreviewImagen] = useState(imagen);
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		añadirProducto(productoNuevo);
-		handleLimpiar();
-	};
-
-	const handleLimpiar = () => {
-		setProductoNuevo({
-			nombre: '',
-			precio: '',
-			imagen: '',
-			descripcion: '',
-			category: '',
-		});
-		setPreviewImagen('')
+		actualizarProductos(productoNuevo);
+		handleClose();
 	};
 
 	const handleImagenChange = (e) => {
@@ -59,7 +41,7 @@ const NewProduct = ({ handleClose }) => {
 			<div className="bg-primary border rounded-lg border-tertiary">
 				<div className="flex justify-between items-center m-8">
 					<p className="p-4 text-center text-blanco">
-						Sistema para añadir productos
+						Sistema para Actualizar empresas
 					</p>
 					<button
 						onClick={handleClose}
@@ -203,13 +185,7 @@ const NewProduct = ({ handleClose }) => {
 								<button
 									type="submit"
 									className="hover:bg-secondary hover:text-blanco px-7 py-3 rounded-lg border border-complementary text-secondary bg-tertiary">
-									Registrar
-								</button>
-								<button
-									type="button"
-									onClick={handleLimpiar}
-									className="hover:bg-secondary hover:text-blanco px-7 py-3 rounded-lg border border-complementary text-secondary bg-tertiary">
-									Limpiar
+									Actualizar Productos
 								</button>
 							</div>
 						</form>
@@ -221,4 +197,4 @@ const NewProduct = ({ handleClose }) => {
 	);
 };
 
-export default NewProduct;
+export default UpdateProduct;

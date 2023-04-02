@@ -5,6 +5,7 @@ import { Menu } from '../../pages/Menu';
 import NewProduct from '../../pages/NewProduct';
 import AddProduct from '../shared/AddProduct';
 import Prueba from '../../pages/Prueba';
+import DataProductos from '../../pages/DataProductos';
 
 
 const Routers = () => {
@@ -13,8 +14,9 @@ const Routers = () => {
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="menu" element={<Menu />} />
-				<Route path="new" element={<Prueba />} />
-				<Route path="new" element={<AddProduct />} />
+				<Route path="new" element={<NewProduct />} />
+				{/* <Route path="new" element={<AddProduct />} /> */}
+				<Route path="data-productos" element={<DataProductos />} />
 			</Routes>
 		</>
 	);
