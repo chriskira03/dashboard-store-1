@@ -24,7 +24,7 @@ const Card = (props) => {
 				<div className="p-8 rounded-xl bg-red flex flex-col items-center gap-x-8 text-center">
 					<img
 						src={imagen}
-						className="flex-shrink-0 max-w-40 max-h-40 object-cover shadow-2xl rounded-full -mt-20"
+						className="flex-shrink-0 w-40 h-40 object-cover shadow-2xl rounded-full -mt-20"
 					/>
 					<h1 className="text-xl">{descripcion}</h1>
 					<h1 className="text-complementary text-sm">{precio}</h1>

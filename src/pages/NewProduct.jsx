@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
+import { useUserContext } from '../components/hooks/UserProvider';
 const NewProduct = () => {
-	const [nombre, setNombre] = useState('');
-	const [precio, setPrecio] = useState('');
-	const [imagen, setImagen] = useState('');
 	const [previewImagen, setPreviewImagen] = useState('');
-	const [descripcion, setDescripcion] = useState('');
 
 	const [productoNuevo, setProductoNuevo] = useState({
-		nombre:'',
-		precio:'',
-		imagen:'',
-		descripcion:'',
-		id:'', 
-		category:''
+		id: '',
+		imagen: '',
+		nombre: '',
+		descripcion: '',
+		precio: '',
+		category: '',
 	});
+
+	const { añadirProducto } = useUserContext();
+
+	const { nombre, precio, imagen, descripcion, id, category } = productoNuevo;
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -22,34 +23,56 @@ const NewProduct = () => {
 		console.log('Precio:', precio);
 		console.log('Imagen:', imagen);
 		console.log('Descripción:', descripcion);
-		// Luego puedes limpiar el formulario
-		setNombre('');
-		setPrecio('');
-		setImagen('');
-		setPreviewImagen('');
-		setDescripcion('');
+		console.log('Id:', id);
+		console.log('Category:', category);
+		añadirProducto(productoNuevo);
 	};
 
 	const handleLimpiar = () => {
-		setNombre('');
-		setPrecio('');
-		setImagen('');
-		setPreviewImagen('');
-		setDescripcion('');
+		setProductoNuevo({
+			nombre: '',
+			precio: '',
+			imagen: '',
+			descripcion: '',
+			id: '',
+			category: '',
+		});
 	};
 
 	const handleImagenChange = (e) => {
 		const archivo = e.target.files[0];
 		if (!archivo) {
-			setImagen('');
+			setProductoNuevo({
+				...productoNuevo,
+				imagen: '',
+			});
 			setPreviewImagen('');
 			return;
 		}
-		setImagen(archivo);
+		const formData = new FormData();
+		formData.append('image', archivo);
+		setProductoNuevo({
+			...productoNuevo,
+			imagen: URL.createObjectURL(archivo),
+		});
 		const reader = new FileReader();
 		reader.onload = () => {
 			setPreviewImagen(reader.result);
+			// setProductoNuevo({
+			// 	...productoNuevo,
+			// 	imagen: reader.result,
+			// });
 		};
+		// reader.onload = () => {
+		// 	setProductoNuevo({
+		// 		...productoNuevo,
+		// 		imagen: reader.result,
+		// 	});
+		// };
+		// setProductoNuevo({
+		// 	...productoNuevo,
+		// 	imagen: previewImagen,
+		// });
 		reader.readAsDataURL(archivo);
 	};
 
@@ -72,7 +95,12 @@ const NewProduct = () => {
 									type="text"
 									id="nombre"
 									value={nombre}
-									onChange={(e) => setNombre(e.target.value)}
+									onChange={(e) =>
+										setProductoNuevo({
+											...productoNuevo,
+											nombre: e.target.value,
+										})
+									}
 									placeholder="Nombre Producto"
 									class="bg-tertiary py-2 pl-0 pr-4 rounded-lg text-blanco outline-none"
 								/>
@@ -92,8 +120,64 @@ const NewProduct = () => {
 									type="text"
 									id="precio"
 									value={precio}
-									onChange={(e) => setPrecio(e.target.value)}
+									onChange={(e) =>
+										setProductoNuevo({
+											...productoNuevo,
+											precio: e.target.value,
+										})
+									}
 									placeholder="Precio"
+									class="bg-tertiary py-2 pl-0 pr-4  rounded-lg text-blanco outline-none"
+								/>
+							</div>
+						</div>
+
+						<div className="m-4 flex items-center justify-between pt-4">
+							<label
+								htmlFor="id"
+								className="text-lg text-blanco pr-8">
+								ID:
+							</label>
+							<div class="bg-tertiary rounded-lg">
+								<span class="py-2 px-2 rounded-lg text-blanco">
+									{/* <RiSearch2Line /> */}
+								</span>
+								<input
+									type="text"
+									id="id"
+									value={id}
+									onChange={(e) =>
+										setProductoNuevo({
+											...productoNuevo,
+											id: e.target.value,
+										})
+									}
+									placeholder="Id"
+									class="bg-tertiary py-2 pl-0 pr-4 rounded-lg text-blanco outline-none"
+								/>
+							</div>
+						</div>
+						<div className="m-4  flex items-center justify-between pt-4">
+							<label
+								htmlFor="category"
+								className="text-lg text-blanco pr-8">
+								Category:
+							</label>
+							<div class=" bg-tertiary rounded-lg">
+								<span class="py-2 px-2 rounded-lg text-blanco">
+									{/* <RiSearch2Line /> */}
+								</span>
+								<input
+									type="text"
+									id="category"
+									value={category}
+									onChange={(e) =>
+										setProductoNuevo({
+											...productoNuevo,
+											category: e.target.value,
+										})
+									}
+									placeholder="Categoria"
 									class="bg-tertiary py-2 pl-0 pr-4  rounded-lg text-blanco outline-none"
 								/>
 							</div>
@@ -112,7 +196,10 @@ const NewProduct = () => {
 									id="descripcion"
 									value={descripcion}
 									onChange={(e) =>
-										setDescripcion(e.target.value)
+										setProductoNuevo({
+											...productoNuevo,
+											descripcion: e.target.value,
+										})
 									}
 									placeholder="Descripción"
 									class="bg-tertiary py-2 pl-0 pr-4  rounded-lg text-blanco outline-none"
@@ -128,6 +215,8 @@ const NewProduct = () => {
 							<input
 								type="file"
 								id="imagen"
+								name="imagen"
+								accept="imagen/*"
 								onChange={handleImagenChange}
 								className=" hidden"
 							/>
@@ -136,13 +225,6 @@ const NewProduct = () => {
 								className="bg-tertiary py-2 px-4  rounded-lg text-blanco outline-none">
 								Subir imagen
 							</label>
-							{/* {previewImagen && (
-								<img
-									src={previewImagen}
-									alt="Vista previa de la imagen"
-									width="200"
-								/>
-							)} */}
 						</div>
 						<div className="m-4 flex items-center justify-evenly pt-4">
 							<button

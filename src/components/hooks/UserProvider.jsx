@@ -1,14 +1,31 @@
 import React, { Children, useEffect, useState } from 'react';
 import { useContext } from 'react';
+import { productos } from '../data/productos';
+import axios from 'axios';
 
 const userContext = React.createContext();
+
 
 export function useUserContext() {
 	return useContext(userContext);
 }
 
 export const UserProvider = (props) => {
+	const url = 'http://localhost:3001/platos';
+	const [platos, setPlatos] = useState([]);
+	const listarEmpresas = () => {
+		axios.get(`${url}`).then((resp) => setPlatos(resp.data));
+	};
+
 	const [product, setProduct] = useState(null);
+
+	const { costa } = productos;
+
+	const [data, setData] = useState(costa);
+
+	function añadirProducto(dato) {
+		setData((prevProductos) => [...prevProductos, dato]);
+	}
 
 	function actualizarProducto(id, category, cantidad) {
 		if (product === null) {
@@ -49,7 +66,14 @@ export const UserProvider = (props) => {
 	// }, [product]);
 
 	return (
-		<userContext.Provider value={{ actualizarProducto, eliminarProducto, product }}>
+		<userContext.Provider
+			value={{
+				actualizarProducto,
+				eliminarProducto,
+				product,
+				añadirProducto,
+				data,
+			}}>
 			{props.children}
 		</userContext.Provider>
 	);
