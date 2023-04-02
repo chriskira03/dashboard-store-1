@@ -34,7 +34,7 @@ const Pedidos = ({ product }) => {
 							/>
 							<div className="max-w-[100px]">
 								<p className="truncate text-[14px]">
-									{costa.descripcion}
+									{costa.nombre}
 								</p>
 								<p className="text-complementary text-[12px]">
 									{costa.precio}

@@ -9,7 +9,9 @@ export function useUserContext() {
 }
 
 export const UserProvider = (props) => {
-	const url = 'http://localhost:3001/platos';
+	// const url = 'http://localhost:3001/platos';
+	const url = 'https://servidor-json-public.vercel.app/platos';
+	
 
 	const [platos, setPlatos] = useState([]);
 	const listarPlatos = () => {

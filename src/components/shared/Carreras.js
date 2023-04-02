@@ -51,7 +51,7 @@ const Carreras = () => {
 									className="rounded-lg w-72 xl:w-[330px]"
 								/>
 								<div className="absolute inset-0 w-full bg-secondary/60 text-xl text-center font-bold text-blanco grid place-items-center py-12 px-16 opacity-0 group-hover:opacity-100 transition-opacity duration-75">
-									<p>Ciencias de la sierra</p>
+									<p>Comida de la sierra</p>
 								</div>
 							</a>
 						</Link>
