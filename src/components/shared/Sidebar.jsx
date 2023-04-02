@@ -6,7 +6,9 @@ import {
 	RiPieChartLine,
 	RiMailLine,
 	RiLogoutCircleRLine,
+	RiRestaurantLine
 } from 'react-icons/ri';
+import { GrCafeteria } from 'react-icons/gr';
 import { Link, Route, Routes } from 'react-router-dom';
 import { Home } from '../../pages/Home';
 import { Menu } from '../../pages/Menu';
@@ -17,23 +19,30 @@ const Sidebar = (props) => {
 		<div className={`bg-tertiary  flex flex-col justify-between py-6 `}>
 			<nav>
 				<ul className="pl-4 ">
-					<li className="text-2xl uppercase font-bold text-blanco text-center my-5">
+					{/* <li className="text-2xl uppercase font-bold text-blanco text-center my-5">
 						<Link to="/">home</Link>
-					</li>
+					</li> */}
 					<li className="bg-primary p-4 rounded-tl-xl flex justify-center">
 						<Link
 							className="bg-secondary text-blanco p-4 rounded-xl "
-							to="menu/">
+							to="/">
 							<RiHome6Line className="text-2xl" />
 						</Link>
 					</li>
 					<li className="p-4 rounded-tl-xl flex justify-center group hover:bg-primary">
 						<Link
 							className="p-4 rounded-xl text-secondary group-hover:text-blanco group-hover:bg-secondary"
+							to="menu/">
+							<RiRestaurantLine className="text-2xl " />
+						</Link>
+					</li>
+					{/* <li className="p-4 rounded-tl-xl flex justify-center group hover:bg-primary">
+						<Link
+							className="p-4 rounded-xl text-secondary group-hover:text-blanco group-hover:bg-secondary"
 							to="new/">
 							<RiPercentLine className="text-2xl" />
 						</Link>
-					</li>
+					</li> */}
 					<li className="p-4 rounded-tl-xl flex justify-center group hover:bg-primary">
 						<Link
 							className="p-4 rounded-xl text-secondary group-hover:text-blanco group-hover:bg-secondary"
@@ -42,13 +51,13 @@ const Sidebar = (props) => {
 						</Link>
 					</li>
 
-					<li className="p-4 rounded-tl-xl flex justify-center group hover:bg-primary">
+					{/* <li className="p-4 rounded-tl-xl flex justify-center group hover:bg-primary">
 						<a
 							href="#"
 							className="p-4 rounded-xl text-secondary group-hover:text-blanco group-hover:bg-secondary">
 							<RiMailLine className="text-2xl" />
 						</a>
-					</li>
+					</li> */}
 				</ul>
 			</nav>
 			<div>
