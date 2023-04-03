@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useUserContext } from '../components/hooks/UserProvider';
+import { useUserContext } from '../../hooks/UserProvider';
 import { AiOutlineLine } from 'react-icons/ai';
 const NewProduct = ({ handleClose }) => {
 	const [previewImagen, setPreviewImagen] = useState('');
@@ -30,7 +30,7 @@ const NewProduct = ({ handleClose }) => {
 			descripcion: '',
 			category: '',
 		});
-		setPreviewImagen('')
+		setPreviewImagen('');
 	};
 
 	const handleImagenChange = (e) => {

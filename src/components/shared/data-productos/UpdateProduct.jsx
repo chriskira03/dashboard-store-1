@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useUserContext } from '../components/hooks/UserProvider';
+import { useUserContext } from '../../hooks/UserProvider';
 import { AiOutlineLine } from 'react-icons/ai';
 const UpdateProduct = ({ handleClose, variable }) => {
 	const [productoNuevo, setProductoNuevo] = useState(variable);

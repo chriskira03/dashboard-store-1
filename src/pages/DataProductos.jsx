@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useUserContext } from '../components/hooks/UserProvider';
 import { AiOutlineLine, AiOutlineEdit } from 'react-icons/ai';
-import { RiDeleteBin6Line } from 'react-icons/ri';
+import { RiAddFill, RiDeleteBin6Line } from 'react-icons/ri';
 import { Box, Modal } from '@mui/material';
-import UpdateProduct from './UpdateProduct';
-import NewProduct from './NewProduct';
+import UpdateProduct from '../components/shared/data-productos/UpdateProduct';
+import NewProduct from '../components/shared/data-productos/NewProduct';
 
 const DataProductos = () => {
 	const [variable, setVariable] = useState({});
@@ -12,14 +12,14 @@ const DataProductos = () => {
 	const [open, setOpen] = React.useState(false);
 	const handleOpen = () => {
 		setOpen(true);
-        setPaso(true);
+		setPaso(true);
 	};
 	const handleClose = () => setOpen(false);
 	const [paso, setPaso] = useState(true);
 	const funcionUpdate = (valor) => {
 		setVariable(valor);
 		setOpen(true);
-        setPaso(false);
+		setPaso(false);
 	};
 	return (
 		<>
@@ -27,8 +27,8 @@ const DataProductos = () => {
 				<p className="text-blanco">Añadir productos</p>
 				<button
 					onClick={handleOpen}
-					className="text-sm text-blue-400 border p-2 mx-3 border-blue-300 rounded-lg">
-					<AiOutlineLine />
+					className="text-xl text-blue-400 border p-2 mx-3 border-blue-300 rounded-lg">
+					<RiAddFill />
 				</button>
 			</div>
 			{platos.map((costa) => (

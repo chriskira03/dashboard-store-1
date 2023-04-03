@@ -11,7 +11,6 @@ export function useUserContext() {
 export const UserProvider = (props) => {
 	const url = 'http://localhost:3001/platos';
 	// const url = 'https://servidor-json-public.vercel.app/platos';
-	
 
 	const [platos, setPlatos] = useState([]);
 	const listarPlatos = () => {
@@ -44,22 +43,26 @@ export const UserProvider = (props) => {
 		}
 	};
 
-	const [product, setProduct] = useState(null);
-	function actualizarProducto(id, category, cantidad) {
-		if (product === null) {
-			setProduct([{ id, category, cantidad }]);
+	const [product, setProduct] = useState([]);
+	function actualizarProducto(id, category, value) {
+		if (product.length === 0) {
+			setProduct((prevProductos) => [
+				...prevProductos,
+				{ id, category, cantidad: 1 },
+			]);
 			return;
 		}
 		let index = product.findIndex(
 			(p) => p.id === id && p.category === category
 		);
 		if (index !== -1) {
+			let cantidadActual = product[index].cantidad;
 			setProduct((prevProductos) => {
 				let nuevosProductos = [...prevProductos];
 				nuevosProductos[index] = {
 					...nuevosProductos[index],
 					category,
-					cantidad,
+					cantidad: cantidadActual + value,
 				};
 				return nuevosProductos;
 			});
@@ -67,7 +70,7 @@ export const UserProvider = (props) => {
 		}
 		setProduct((prevProductos) => [
 			...prevProductos,
-			{ id, category, cantidad },
+			{ id, category, cantidad: 1 },
 		]);
 	}
 
@@ -79,6 +82,9 @@ export const UserProvider = (props) => {
 			return nuevosProductos;
 		});
 	}
+	const reiniciarPedido = () => {
+		setProduct([]);
+	};
 
 	return (
 		<userContext.Provider
@@ -89,6 +95,7 @@ export const UserProvider = (props) => {
 				deleteProductos,
 				actualizarProducto,
 				eliminarProducto,
+				reiniciarPedido,
 				product,
 			}}>
 			{props.children}

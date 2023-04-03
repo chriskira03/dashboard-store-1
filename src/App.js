@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import Sidebar from './components/shared/Sidebar';
-import Header from './components/shared/Header';
-import Order from './components/shared/Order';
+import Sidebar from './components/ruteo/Sidebar';
+import Header from './components/ruteo/Header';
+import Order from './components/shared/order/Order';
 import { UserProvider } from './components/hooks/UserProvider';
 import Routers from './components/ruteo/Routers';
 
@@ -9,9 +9,6 @@ function App() {
 	return (
 		<>
 			<UserProvider>
-				{/* <PrincipalLayout>
-					<Routers />
-				</PrincipalLayout> */}
 				<div className="bg-primary w-full min-h-screen">
 					<main className="flex ">
 						<div className="w-20 min-h-screen">

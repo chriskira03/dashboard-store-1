@@ -2,7 +2,7 @@
 import React from 'react';
 import { RiCloseLine, RiDeleteBin6Line } from 'react-icons/ri';
 import { AiOutlineLine } from 'react-icons/ai';
-import { useUserContext } from '../hooks/UserProvider';
+import { useUserContext } from '../../hooks/UserProvider';
 
 const Pedidos = ({ product }) => {
 	const { id, category, cantidad } = product;
@@ -11,7 +11,7 @@ const Pedidos = ({ product }) => {
 
 	const actualizarResta = () => {
 		if (cantidad > 1) {
-			actualizarProducto(id, category, cantidad - 1);
+			actualizarProducto(id, category, -1);
 		} else {
 			eliminarProducto(id, category);
 		}
@@ -32,18 +32,20 @@ const Pedidos = ({ product }) => {
 								src={costa.imagen}
 								className="w-10 h-10 object-cover shadow-2xl rounded-full mx-2"
 							/>
-							<div className="max-w-[100px]">
-								<p className="truncate text-[14px]">
-									{costa.nombre}
-								</p>
-								<p className="text-complementary text-[12px]">
-									{costa.precio}
+							<div className="grid grid-cols-12">
+								<div className="max-w-[200px] col-span-6">
+									<p className="truncate text-[14px] ">
+										{costa.nombre}
+									</p>
+									<p className="text-complementary text-[12px] ">
+										$/. {costa.precio}
+									</p>
+								</div>
+								<p className="ml-8 col-span-1">{cantidad}</p>
+								<p className="ml-10 col-span-5 text-[12px]">
+									$/. {(cantidad * costa.precio).toFixed(2)}
 								</p>
 							</div>
-							<p className="ml-8">{cantidad}</p>
-							<p className="ml-10">
-								$ {(cantidad * costa.precio).toFixed(2)}
-							</p>
 						</div>
 						<div className="flex items-center justify-between mx-4 mb-2">
 							<form>
