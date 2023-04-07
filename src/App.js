@@ -1,3 +1,4 @@
+import './styles/global.css';
 import React, { useState } from 'react';
 import Sidebar from './components/ruteo/Sidebar';
 import Header from './components/ruteo/Header';
@@ -6,27 +7,27 @@ import { UserProvider } from './components/hooks/UserProvider';
 import Routers from './components/ruteo/Routers';
 
 function App() {
+	const [sidebar, setSidebar] = useState(false);
+
 	return (
 		<>
 			<UserProvider>
 				<div className="bg-primary w-full min-h-screen">
-					<main className="flex ">
-						<div className="w-20 min-h-screen">
+					<div>
+						<div className="w-full bg-tertiary h-2"></div>
+						<header className="flex flex-col items-center justify-between py-4 px-8 bg-primary space-y-4">
+							<Header setSidebar={setSidebar} sidebar={sidebar} />
 							<Sidebar />
+						</header>
+					</div>
+					<hr />
+					<main className="flex ">
+						<div className="">
+							<Routers />
 						</div>
-						<div className="flex-1">
-							<div className="grid grid-cols-9">
-								<div className="lg:col-span-7">
-									<Header />
-									<hr />
-									<Routers />
-								</div>
-								<div className="lg:col-span-2 bg-tertiary">
-									<Order />
-								</div>
-							</div>
-						</div>
+						<Order setSidebar={setSidebar} sidebar={sidebar} />
 					</main>
+					<footer></footer>
 				</div>
 			</UserProvider>
 		</>

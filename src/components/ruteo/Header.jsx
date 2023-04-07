@@ -1,7 +1,8 @@
 import React from 'react';
-import { RiSearch2Line, RiArrowDownSLine } from 'react-icons/ri';
+import { RiSearch2Line, RiTakeawayLine } from 'react-icons/ri';
 
 import { useState, useEffect } from 'react';
+import { useUserContext } from '../hooks/UserProvider';
 
 function FechaActual() {
 	const [fecha, setFecha] = useState('');
@@ -17,15 +18,19 @@ function FechaActual() {
 	return fecha;
 }
 
-const Header = () => {
+const Header = ({ setSidebar, sidebar }) => {
 	const [pedido, setPedido] = useState(0);
 	const actualizar = (n) => {
 		setPedido(n);
 	};
+	const { product } = useUserContext();
+	const handleSidebar = () => {
+		setSidebar(!sidebar);
+	};
 	return (
 		<>
-			<header className="flex items-center justify-between p-4 bg-primary">
-				<div className="pl-6 pt-2">
+			<div className="flex justify-between items-center w-full px-6">
+				<div className="">
 					<h1 className="text-2xl font-bold text-blanco">
 						Christian Valdivia
 					</h1>
@@ -34,7 +39,7 @@ const Header = () => {
 				<form>
 					<div class="inline-flex items-center bg-tertiary rounded-lg">
 						<span class="py-2 px-4 rounded-lg text-blanco">
-							<RiSearch2Line actualizar={actualizar} />
+							<RiSearch2Line />
 						</span>
 						<input
 							type="text"
@@ -43,7 +48,11 @@ const Header = () => {
 						/>
 					</div>
 				</form>
-			</header>
+				<div className="cursor-pointer" onClick={handleSidebar}>
+					<span className="notification">{product.length}</span>
+					<RiTakeawayLine className="text-3xl text-blanco" />
+				</div>
+			</div>
 		</>
 	);
 };

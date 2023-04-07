@@ -1,60 +1,51 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useUserContext } from '../../hooks/UserProvider';
 import Pedidos from './Pedidos';
+import { RiCloseLine } from 'react-icons/ri';
 
-const Order = () => {
-	const { product, reiniciarPedido } = useUserContext();
-	const registro = () => {
-		let x = window.confirm(`Registro exitoso`);
-		if (x) {
-			reiniciarPedido();
-		}
-	};
+const Order = ({ setSidebar, sidebar }) => {
+	const { product } = useUserContext();
 
 	return (
 		<>
-			<div className="pt-6">
-				<p className="pb-8 pl-4 text-xl text-blanco"> Orders #3286</p>
-				<div className="flex items-center justify-evenly gap-2 pb-4">
-					{/* <button className="bg-secondary text-blanco px-3 py-1 rounded-lg border border-complementary">
-						Ordenes
-					</button> */}
-					{/* <button className="hover:bg-secondary hover:text-blanco px-3 py-1 rounded-lg border border-complementary text-secondary bg-tertiary">
-						To go
-					</button>
-					<button className="hover:bg-secondary hover:text-blanco px-3 py-1 rounded-lg border border-complementary text-secondary bg-tertiary">
-						Delivery
-					</button> */}
-				</div>
-			</div>
-			<hr></hr>
-			<div className="py-5">
-				<div className="flex justify-between text-blanco px-10 text-sm">
-					<p className="p-2">Item</p>
-					<p className="ml-32 p-2">Cantidad</p>
-					<p className=" p-2">Precio</p>
-				</div>
-			</div>
-			<hr></hr>
-			<div>
-				{product.length > 0 ? (
-					<>
-						{product.map((producto) => {
-							return <Pedidos product={producto} />;
-						})}
-						<div className="flex items-center justify-center mt-6">
-							<button
-								className="hover:bg-secondary hover:text-blanco px-6 py-3 rounded-lg border border-complementary text-secondary bg-tertiary"
-								onClick={registro}>
-								Envíar Pedido
-							</button>
-						</div>
-					</>
-				) : (
+			{/* <div
+				className={
+					sidebar
+						? 'bg-negroPuro cursor-pointer fixed z-20 inset-0 opacity-50 visible'
+						: 'opacity-0 hidden transition-opacity duration-1000'
+				}
+				onClick={() => setSidebar(!sidebar)}></div>
+			<div /> */}
+			<div
+				className={
+					sidebar
+						? 'h-screen bg-tertiary md:bg-primary fixed  md:w-80 w-full duration-300 transition-left z-30 left-0'
+						: 'h-screen bg-tertiary md:bg-primary fixed  w-64 duration-300 transition-left z-30 -left-80'
+				}>
+				<div className="flex items-center justify-between px-3">
 					<p className="text-center text-blanco text-2xl py-4">
 						Registro de Ordenes
 					</p>
-				)}
+					<button
+						className="text-red-500 text-2xl border m-2 rounded-xl p-1"
+						onClick={() => setSidebar(false)}>
+						<RiCloseLine className="" />
+					</button>
+				</div>
+				<div>
+					{product.length > 0 && (
+						<>
+							{product.map((producto) => {
+								return <Pedidos product={producto} />;
+							})}
+							<div className="flex items-center justify-center mt-6">
+								<button className="hover:bg-secondary hover:text-blanco px-6 py-3 rounded-lg border border-complementary text-secondary bg-tertiary">
+									Envíar Pedido
+								</button>
+							</div>
+						</>
+					)}
+				</div>
 			</div>
 		</>
 	);

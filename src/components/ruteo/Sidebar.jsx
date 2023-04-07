@@ -5,11 +5,19 @@ import {
 	RiPieChartLine,
 	RiLogoutCircleRLine,
 	RiRestaurantLine,
+	RiCloseLine
 } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
 
 const Sidebar = (props) => {
 	const [seleccionado, setSeleccionado] = useState(1);
+
+	// const capa = 'p-4 rounded-tl-xl flex justify-center group hover:bg-primary';
+	// const boton =
+	// 	'p-4 rounded-xl text-secondary group-hover:text-blanco group-hover:bg-secondary';
+
+	// const capa2 = 'bg-primary p-4 rounded-tl-xl flex justify-center my-2';
+	// const boton2 = 'bg-secondary text-blanco p-4 rounded-xl ';
 
 	const capa = 'p-4 rounded-tl-xl flex justify-center group hover:bg-primary';
 	const boton =
@@ -22,28 +30,41 @@ const Sidebar = (props) => {
 		setSeleccionado(id);
 	};
 	return (
-		<div className={`bg-tertiary  flex flex-col justify-between py-6`}>
+		<div className={`bg-tertiary  w-full `}>
 			<nav>
-				<ul className="pl-4 ">
-					<li className={`${seleccionado === 1 ? capa2 : capa}`}>
+				<ul className="flex items-center justify-center space-x-12 border rounded-2xl mx-40 py-4">
+					<li className="">
 						<Link
-							className={`${seleccionado === 1 ? boton2 : boton}`}
+							className="flex flex-col items-center space-y-1 hover:text-secondary text-blanco "
 							onClick={() => {
 								seleccionarBoton(1);
 							}}
 							to="/">
-							<RiHome6Line className="text-2xl" />
+							<RiHome6Line className="text-3xl" />
+							<p>COSTA</p>
 						</Link>
 					</li>
-					<li className={`${seleccionado === 2 ? capa2 : capa}`}>
+					<li className="">
 						<Link
-							className={`${seleccionado === 2 ? boton2 : boton}`}
+							className="flex flex-col items-center space-y-1 hover:text-secondary text-blanco "
 							onClick={() => seleccionarBoton(2)}
 							to="menu/">
-							<RiRestaurantLine className="text-2xl " />
+							<RiRestaurantLine className="text-3xl " />
+							<p>SIERRA</p>
 						</Link>
 					</li>
-					<li className={`${seleccionado === 3 ? capa2 : capa}`}>
+					<li className="">
+						<Link
+							className="flex flex-col items-center space-y-1 hover:text-secondary text-blanco "
+							onClick={() => {
+								seleccionarBoton(3);
+							}}
+							to="data-productos/">
+							<RiPieChartLine className="text-3xl" />
+							<p>SELVA</p>
+						</Link>
+					</li>
+					{/* <li className={`${seleccionado === 3 ? capa2 : capa}`}>
 						<Link
 							className={`${seleccionado === 3 ? boton2 : boton}`}
 							onClick={() => {
@@ -51,11 +72,12 @@ const Sidebar = (props) => {
 							}}
 							to="data-productos/">
 							<RiPieChartLine className="text-2xl" />
+							<p>Selva</p>
 						</Link>
-					</li>
+					</li> */}
 				</ul>
 			</nav>
-			<div>
+			{/* <div>
 				<ul className="pl-4">
 					<li className="p-4 rounded-tl-xl flex justify-center group hover:bg-primary">
 						<a
@@ -65,7 +87,7 @@ const Sidebar = (props) => {
 						</a>
 					</li>
 				</ul>
-			</div>
+			</div> */}
 		</div>
 	);
 };

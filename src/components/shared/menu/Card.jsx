@@ -7,6 +7,7 @@ const Card = (props) => {
 	const { actualizarProducto } = useUserContext();
 	const { imagen, descripcion, precio, id, category, nombre } = props;
 	const [pedido, setPedido] = useState(0);
+	
 	// const pedir = () => {
 	// 	setPedido(1);
 	// };
