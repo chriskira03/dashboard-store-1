@@ -2,26 +2,31 @@
 import React from 'react';
 import { RiCloseLine, RiDeleteBin6Line } from 'react-icons/ri';
 import { AiOutlineLine } from 'react-icons/ai';
-import { useUserContext } from '../../hooks/UserProvider';
+import {
+	actualizarOrden,
+	eliminarOrden,
+} from '../../../store/slices/userReducer';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Pedidos = ({ product }) => {
+	const dispatch = useDispatch();
 	const { id, category, cantidad } = product;
 
-	const { actualizarProducto, eliminarProducto, platos } = useUserContext();
+	const productos = useSelector((state) => state.userAlmacen).producto;
 
 	const actualizarResta = () => {
 		if (cantidad > 1) {
-			actualizarProducto(id, category, -1);
+			dispatch(actualizarOrden(id, category, -1));
 		} else {
-			eliminarProducto(id, category);
+			dispatch(eliminarOrden(id, category));
 		}
 	};
 	const eliminar = () => {
-		eliminarProducto(id, category);
+		dispatch(eliminarOrden(id, category));
 	};
 	return (
 		<>
-			{platos
+			{productos
 				.filter(
 					(costa) => costa.id === id && costa.category === category
 				)

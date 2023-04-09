@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { useUserContext } from '../../hooks/UserProvider';
 import Pedidos from './Pedidos';
 import { RiCloseLine } from 'react-icons/ri';
+import { useSelector } from 'react-redux';
 
 const Order = ({ setSidebar, sidebar }) => {
-	const { product } = useUserContext();
+
+	const orden = useSelector((state)=>state.userAlmacen).orden;
 
 	return (
 		<>
@@ -33,9 +34,9 @@ const Order = ({ setSidebar, sidebar }) => {
 					</button>
 				</div>
 				<div>
-					{product.length > 0 && (
+					{orden.length > 0 && (
 						<>
-							{product.map((producto) => {
+							{orden.map((producto) => {
 								return <Pedidos product={producto} />;
 							})}
 							<div className="flex items-center justify-center mt-6">

@@ -41,16 +41,36 @@ const Sidebar = (props) => {
 							}}
 							to="/">
 							<RiHome6Line className="text-3xl" />
-							<p>COSTA</p>
+							<p>HOME</p>
 						</Link>
 					</li>
 					<li className="">
 						<Link
 							className="flex flex-col items-center space-y-1 hover:text-secondary text-blanco "
 							onClick={() => seleccionarBoton(2)}
-							to="menu/">
+							to="costa/">
 							<RiRestaurantLine className="text-3xl " />
+							<p>COSTA</p>
+						</Link>
+					</li>
+					<li className="">
+						<Link
+							className="flex flex-col items-center space-y-1 hover:text-secondary text-blanco "
+							onClick={() => {
+								seleccionarBoton(1);
+							}}
+							to="sierra/">
+							<RiHome6Line className="text-3xl" />
 							<p>SIERRA</p>
+						</Link>
+					</li>
+					<li className="">
+						<Link
+							className="flex flex-col items-center space-y-1 hover:text-secondary text-blanco "
+							onClick={() => seleccionarBoton(2)}
+							to="selva/">
+							<RiRestaurantLine className="text-3xl " />
+							<p>SELVA</p>
 						</Link>
 					</li>
 					<li className="">
@@ -61,7 +81,7 @@ const Sidebar = (props) => {
 							}}
 							to="data-productos/">
 							<RiPieChartLine className="text-3xl" />
-							<p>SELVA</p>
+							<p>ADD PRODUCT</p>
 						</Link>
 					</li>
 					{/* <li className={`${seleccionado === 3 ? capa2 : capa}`}>

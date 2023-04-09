@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
-import { useUserContext } from '../../hooks/UserProvider';
 import { AiOutlineLine } from 'react-icons/ai';
+import { useDispatch } from 'react-redux';
+import { actualizarProductos } from '../../../store/slices/userReducer';
 const UpdateProduct = ({ handleClose, variable }) => {
 	const [productoNuevo, setProductoNuevo] = useState(variable);
 
-	const { actualizarProductos } = useUserContext();
+	const dispatch = useDispatch();
 
 	const { nombre, precio, imagen, descripcion, category, id } = productoNuevo;
 	const [previewImagen, setPreviewImagen] = useState(imagen);
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		actualizarProductos(productoNuevo);
+		dispatch(actualizarProductos(productoNuevo));
 		handleClose();
 	};
 

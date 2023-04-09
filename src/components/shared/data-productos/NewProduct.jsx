@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { useUserContext } from '../../hooks/UserProvider';
 import { AiOutlineLine } from 'react-icons/ai';
+import { añadirProducto } from '../../../store/slices/userReducer';
+import { useDispatch } from 'react-redux';
 const NewProduct = ({ handleClose }) => {
+	const dispatch = useDispatch();
 	const [previewImagen, setPreviewImagen] = useState('');
 
 	const [productoNuevo, setProductoNuevo] = useState({
@@ -12,13 +14,12 @@ const NewProduct = ({ handleClose }) => {
 		imagen: '',
 	});
 
-	const { añadirProducto } = useUserContext();
 
 	const { nombre, precio, imagen, descripcion, category } = productoNuevo;
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		añadirProducto(productoNuevo);
+		dispatch(añadirProducto(productoNuevo));
 		handleLimpiar();
 	};
 
@@ -77,8 +78,8 @@ const NewProduct = ({ handleClose }) => {
 									className="text-lg text-blanco pr-8">
 									Nombre del producto:
 								</label>
-								<div class="bg-tertiary rounded-lg">
-									<span class="py-2 px-2 rounded-lg text-blanco">
+								<div className="bg-tertiary rounded-lg">
+									<span className="py-2 px-2 rounded-lg text-blanco">
 										{/* <RiSearch2Line /> */}
 									</span>
 									<input
@@ -92,7 +93,7 @@ const NewProduct = ({ handleClose }) => {
 											})
 										}
 										placeholder="Nombre Producto"
-										class="bg-tertiary py-2 pl-0 pr-4 rounded-lg text-blanco outline-none"
+										className="bg-tertiary py-2 pl-0 pr-4 rounded-lg text-blanco outline-none"
 									/>
 								</div>
 							</div>
@@ -117,7 +118,7 @@ const NewProduct = ({ handleClose }) => {
 											})
 										}
 										placeholder="Precio"
-										class="bg-tertiary py-2 pl-0 pr-4  rounded-lg text-blanco outline-none"
+										className="bg-tertiary py-2 pl-0 pr-4  rounded-lg text-blanco outline-none"
 									/>
 								</div>
 							</div>
