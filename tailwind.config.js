@@ -8,7 +8,8 @@ module.exports = {
 				secondary: '#ec7c6a',
 				tertiary: '#1F1D2B',
 				blanco: '#ffffff',
-				complementary: '#808080'
+				complementary: '#808080',
+				negroPuro: 'rgba(0, 0, 0, 1)'
 
 			},
 		},

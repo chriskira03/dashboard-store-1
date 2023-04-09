@@ -8,19 +8,19 @@ const Order = ({ setSidebar, sidebar }) => {
 
 	return (
 		<>
-			{/* <div
+			<div
 				className={
 					sidebar
 						? 'bg-negroPuro cursor-pointer fixed z-20 inset-0 opacity-50 visible'
 						: 'opacity-0 hidden transition-opacity duration-1000'
 				}
 				onClick={() => setSidebar(!sidebar)}></div>
-			<div /> */}
+			<div />
 			<div
 				className={
 					sidebar
-						? 'h-screen bg-tertiary md:bg-primary fixed  md:w-80 w-full duration-300 transition-left z-30 left-0'
-						: 'h-screen bg-tertiary md:bg-primary fixed  w-64 duration-300 transition-left z-30 -left-80'
+						? 'h-screen bg-tertiary md:bg-primary fixed inset-y-0 md:w-80 w-full duration-300 transition-left z-30 left-0'
+						: 'h-screen bg-tertiary md:bg-primary fixed inset-y-0 w-64 duration-300 transition-left z-30 -left-80'
 				}>
 				<div className="flex items-center justify-between px-3">
 					<p className="text-center text-blanco text-2xl py-4">
