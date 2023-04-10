@@ -1,13 +1,24 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React from 'react';
-import { actualizarOrden, setOrden } from '../../../store/slices/userReducer';
-import { useDispatch, useSelector } from 'react-redux';
+import { actualizarOrden2 } from '../../../store/slices/userReducer';
+import { useDispatch } from 'react-redux';
 
 const Card = (props) => {
 	const { productos } = props;
 	const dispatch = useDispatch();
 	const actualizar = () => {
-		dispatch(actualizarOrden(productos.id, productos.category, 1));
+		if (productos.cantidad > 0) {
+			dispatch(
+				actualizarOrden2(
+					productos.id,
+					productos.category,
+					productos.cantidad,
+					1
+				)
+			);
+		} else {
+			alert(`Cantidad del menu ${productos.nombre} insuficiente`);
+		}
 	};
 
 	return (
@@ -21,6 +32,9 @@ const Card = (props) => {
 					<h1 className="text-xl">{productos.nombre}</h1>
 					<h1 className="text-complementary text-sm">
 						$/. {productos.precio}
+					</h1>
+					<h1 className="text-complementary text-sm">
+						Stock: {productos.cantidad}
 					</h1>
 					<button
 						onClick={actualizar}

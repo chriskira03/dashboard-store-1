@@ -4,14 +4,14 @@ import { Link } from 'react-router-dom';
 
 export const Home = () => {
 	return (
-		<div className="flex flex-wrap items-center justify-evenly gap-x-4 px-4">
-			<div className="lg:col-start-2 lg:col-span-11">
-				<h1 className="text-blanco text-center text-2xl pt-8">
+		<div className="flex  items-center justify-center gap-x-4 px-4">
+			<div className="">
+				<h1 className="text-blanco text-center text-2xl py-8">
 					Disfruta nuestra gran variedad de platillos
 				</h1>
-				<div className="grid grid-cols-1 lg:grid-cols-3 gap-y-12 gap-x-10">
-					<div className="grid items-center text-blanco">
-						<div>
+				<div className="grid lg:grid-cols-4 gap-y-12 gap-x-10">
+					<div className="col-span-1 items-center text-blanco">
+						<div className="">
 							<p className="text-3xl font-bold mb-3 relative before:block before:absolute before:-top-3 before:rounded-lg before:w-16 before:h-1 before:bg-secondary">
 								¿Quieres saber quienes somos nosotros?
 							</p>
@@ -30,7 +30,7 @@ export const Home = () => {
 							</span>
 						</div>
 					</div>
-					<div className="col-span-2 hidden lg:block mt-12">
+					<div className="col-span-3 hidden lg:block mt-12">
 						<div className="h-[22rem] xl:h-[400px] max-w-[800px] relative">
 							<Link
 								// className="bg-secondary text-blanco p-4 rounded-xl "

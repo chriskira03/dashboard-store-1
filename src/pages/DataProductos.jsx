@@ -44,10 +44,17 @@ const DataProductos = () => {
 						<RiAddFill />
 					</button>
 				</div>
+				<dvi className="flex text-secondary text-2xl mx-8 items-center space-x-8">
+					<p className="mx-12 px-28">Plato</p>
+					<p className="mx-12 px-20">Región</p>
+					<p className="mx-12  px-36	 ">Descripción</p>
+					<p className="mx-24 pl-52">Precio</p>
+					<p className="mx-10 pl-14">Stock</p>
+				</dvi>
 				{productos.map((costa) => (
 					<div className="flex-1 rounded-lg bg-primary m-6 border">
 						<div className="grid grid-cols-12 text-blanco px-1 py-4 w-full h-full">
-							<div className="col-span-10">
+							<div className="col-span-11">
 								<dib className="flex justify-between items-center">
 									<img
 										src={costa.imagen}
@@ -55,7 +62,7 @@ const DataProductos = () => {
 										alt="comida"
 									/>
 									<div className="grid grid-cols-12 w-full h-ful items-center justify-center">
-										<p className="text-2xl p-4 col-span-4">
+										<p className="text-2xl p-4 col-span-3">
 											{costa.nombre}
 										</p>
 										<p className="text-2xl p-4 col-span-2">
@@ -65,12 +72,15 @@ const DataProductos = () => {
 											{costa.descripcion}
 										</p>
 										<p className="text-2xl p-4 col-span-1">
-											{costa.precio}
+											S/. {costa.precio}
+										</p>
+										<p className="text-2xl p-4 col-span-1">
+											{costa.cantidad}
 										</p>
 									</div>
 								</dib>
 							</div>
-							<div className="col-span-2 w-full h-full grid items-center justify-center">
+							<div className="col-span-1 w-full h-full grid items-center justify-center">
 								<div className="">
 									<button
 										onClick={() => eliminarProduct(costa)}

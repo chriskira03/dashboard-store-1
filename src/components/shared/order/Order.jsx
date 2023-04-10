@@ -2,10 +2,18 @@ import React, { useState } from 'react';
 import Pedidos from './Pedidos';
 import { RiCloseLine } from 'react-icons/ri';
 import { useSelector } from 'react-redux';
+import { Box, Modal } from '@mui/material';
+import ResumenOrder from './ResumenOrder';
 
 const Order = ({ setSidebar, sidebar }) => {
-
-	const orden = useSelector((state)=>state.userAlmacen).orden;
+	const orden = useSelector((state) => state.userAlmacen).orden;
+	const [open, setOpen] = React.useState(false);
+	const handleOpen = () => {
+		setOpen(true);
+		// setPaso(true);
+	};
+	const handleClose = () => setOpen(false);
+	// const [paso, setPaso] = useState(true);
 
 	return (
 		<>
@@ -40,7 +48,9 @@ const Order = ({ setSidebar, sidebar }) => {
 								return <Pedidos product={producto} />;
 							})}
 							<div className="flex items-center justify-center mt-6">
-								<button className="hover:bg-secondary hover:text-blanco px-6 py-3 rounded-lg border border-complementary text-secondary bg-tertiary">
+								<button
+									onClick={handleOpen}
+									className="hover:bg-secondary hover:text-blanco px-6 py-3 rounded-lg border border-complementary text-secondary bg-tertiary">
 									Envíar Pedido
 								</button>
 							</div>
@@ -48,6 +58,27 @@ const Order = ({ setSidebar, sidebar }) => {
 					)}
 				</div>
 			</div>
+			<Modal
+				open={open}
+				onClose={handleClose}
+				aria-labelledby="modal-modal-title"
+				aria-describedby="modal-modal-description">
+				<Box
+					className="w-[90%] md:w-[60%] h-[90vh] md:h-auto overflow-auto rounded-lg"
+					sx={{
+						position: 'absolute',
+						top: '50%',
+						left: '50%',
+						transform: 'translate(-50%, -50%)',
+						bgcolor: 'transparent',
+					}}>
+					{open && (
+						<>
+							<ResumenOrder handleClose={handleClose} orden={orden} />{' '}
+						</>
+					)}
+				</Box>
+			</Modal>
 		</>
 	);
 };

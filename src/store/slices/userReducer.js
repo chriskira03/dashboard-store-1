@@ -52,6 +52,38 @@ export const deleteProductos = (dato) => {
 	};
 };
 //funcione flecha para ordenes
+export const actualizarOrden2 = (id, category, cantGeneral, value) => {
+	return async (dispatch, getState) => {
+		const orden = getState().userAlmacen.orden;
+		// console.log(orden);
+		if (orden.length === 0) {
+			dispatch(setOrden([...orden, { id, category, cantidad: 1 }]));
+			return;
+		}
+
+		let index = orden.findIndex(
+			(p) => p.id === id && p.category === category
+		);
+
+		if (index !== -1) {
+			let cantidadActual = orden[index].cantidad;
+			if (cantidadActual < cantGeneral) {
+				const actualizar = orden.map((p) => {
+					if (p.id === id && p.category === category) {
+						return { ...p, cantidad: cantidadActual + value };
+					}
+					return p;
+				});
+				dispatch(setOrden(actualizar));
+				return;
+			} else {
+				alert('Cantidad insificiente');
+				return;
+			}
+		}
+		dispatch(setOrden([...orden, { id, category, cantidad: 1 }]));
+	};
+};
 export const actualizarOrden = (id, category, value) => {
 	return async (dispatch, getState) => {
 		const orden = getState().userAlmacen.orden;
@@ -89,6 +121,8 @@ export const eliminarOrden = (id, category) => {
 };
 export const reiniciarOrden = () => {
 	return (dispatch) => {
+
+		
 		dispatch(setOrden([]));
 	};
 };

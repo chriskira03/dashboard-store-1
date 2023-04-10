@@ -15,7 +15,7 @@ const NewProduct = ({ handleClose }) => {
 	});
 
 
-	const { nombre, precio, imagen, descripcion, category } = productoNuevo;
+	const { nombre, precio, imagen, descripcion, category, cantidad } = productoNuevo;
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -30,6 +30,7 @@ const NewProduct = ({ handleClose }) => {
 			imagen: '',
 			descripcion: '',
 			category: '',
+			cantidad:''
 		});
 		setPreviewImagen('');
 	};
@@ -168,6 +169,31 @@ const NewProduct = ({ handleClose }) => {
 										}
 										placeholder="Descripción"
 										class="bg-tertiary py-2 pl-0 pr-4  rounded-lg text-blanco outline-none"
+									/>
+								</div>
+							</div>
+							<div className="m-4  flex items-center justify-between pt-4">
+								<label
+									htmlFor="cantidad"
+									className="text-lg text-blanco pr-8">
+									Cantidad:
+								</label>
+								<div class=" bg-tertiary rounded-lg">
+									<span class="py-2 px-2 rounded-lg text-blanco">
+										{/* <RiSearch2Line /> */}
+									</span>
+									<input
+										type="text"
+										id="cantidad"
+										value={cantidad}
+										onChange={(e) =>
+											setProductoNuevo({
+												...productoNuevo,
+												cantidad: e.target.value,
+											})
+										}
+										placeholder="Cantidad"
+										className="bg-tertiary py-2 pl-0 pr-4  rounded-lg text-blanco outline-none"
 									/>
 								</div>
 							</div>
