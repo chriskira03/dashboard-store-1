@@ -20,11 +20,6 @@ function FechaActual() {
 }
 
 const Header = ({ setSidebar, sidebar }) => {
-	const [pedido, setPedido] = useState(0);
-	const actualizar = (n) => {
-		setPedido(n);
-	};
-
 	const orden = useSelector((state) => state.userAlmacen).orden;
 	const handleSidebar = () => {
 		setSidebar(!sidebar);

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { AiOutlineEdit } from 'react-icons/ai';
 import { RiAddFill, RiDeleteBin6Line } from 'react-icons/ri';
 import { Box, Modal } from '@mui/material';
