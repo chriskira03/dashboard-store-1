@@ -1,5 +1,5 @@
 import React from 'react';
-import { RiSearch2Line, RiTakeawayLine } from 'react-icons/ri';
+import { RiPieChartLine, RiSearch2Line, RiTakeawayLine } from 'react-icons/ri';
 
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
@@ -55,6 +55,14 @@ const Header = ({ setSidebar, sidebar }) => {
 						/>
 					</div>
 				</form>
+				<div className="">
+					<Link
+						className="flex flex-col items-center space-y-1 hover:text-secondary text-blanco "
+						to="data-productos/">
+						<RiPieChartLine className="text-3xl" />
+						<p>ADD PRODUCT</p>
+					</Link>
+				</div>
 				<div className="cursor-pointer" onClick={handleSidebar}>
 					<span className="notification">{orden.length}</span>
 					{console.log(orden)}

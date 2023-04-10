@@ -1,23 +1,10 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react';
-import {
-	RiHome6Line,
-	RiPieChartLine,
-	RiLogoutCircleRLine,
-	RiRestaurantLine,
-	RiCloseLine
-} from 'react-icons/ri';
+import { RiHome6Line, RiLeafLine, RiRestaurant2Line, RiRestaurantLine, RiSunFoggyLine } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
 
 const Sidebar = (props) => {
 	const [seleccionado, setSeleccionado] = useState(1);
-
-	// const capa = 'p-4 rounded-tl-xl flex justify-center group hover:bg-primary';
-	// const boton =
-	// 	'p-4 rounded-xl text-secondary group-hover:text-blanco group-hover:bg-secondary';
-
-	// const capa2 = 'bg-primary p-4 rounded-tl-xl flex justify-center my-2';
-	// const boton2 = 'bg-secondary text-blanco p-4 rounded-xl ';
 
 	const capa = 'p-4 rounded-tl-xl flex justify-center group hover:bg-primary';
 	const boton =
@@ -32,8 +19,8 @@ const Sidebar = (props) => {
 	return (
 		<div className={`bg-tertiary  w-full `}>
 			<nav>
-				<ul className="flex items-center justify-center space-x-12 border rounded-2xl mx-40 py-4">
-					<li className="">
+				<ul className="flex items-center justify-center space-x-16 border rounded-2xl mx-40 py-4">
+					{/* <li className="">
 						<Link
 							className="flex flex-col items-center space-y-1 hover:text-secondary text-blanco "
 							onClick={() => {
@@ -43,13 +30,22 @@ const Sidebar = (props) => {
 							<RiHome6Line className="text-3xl" />
 							<p>HOME</p>
 						</Link>
+					</li> */}
+					<li className="">
+						<Link
+							className="flex flex-col items-center space-y-1 hover:text-secondary text-blanco "
+							onClick={() => seleccionarBoton(2)}
+							to="menu/">
+							<RiRestaurantLine className="text-3xl " />
+							<p>MENÚ</p>
+						</Link>
 					</li>
 					<li className="">
 						<Link
 							className="flex flex-col items-center space-y-1 hover:text-secondary text-blanco "
 							onClick={() => seleccionarBoton(2)}
 							to="costa/">
-							<RiRestaurantLine className="text-3xl " />
+							<RiRestaurant2Line className="text-3xl " />
 							<p>COSTA</p>
 						</Link>
 					</li>
@@ -60,7 +56,7 @@ const Sidebar = (props) => {
 								seleccionarBoton(1);
 							}}
 							to="sierra/">
-							<RiHome6Line className="text-3xl" />
+							<RiSunFoggyLine className="text-3xl" />
 							<p>SIERRA</p>
 						</Link>
 					</li>
@@ -69,11 +65,11 @@ const Sidebar = (props) => {
 							className="flex flex-col items-center space-y-1 hover:text-secondary text-blanco "
 							onClick={() => seleccionarBoton(2)}
 							to="selva/">
-							<RiRestaurantLine className="text-3xl " />
+							<RiLeafLine className="text-3xl " />
 							<p>SELVA</p>
 						</Link>
 					</li>
-					<li className="">
+					{/* <li className="">
 						<Link
 							className="flex flex-col items-center space-y-1 hover:text-secondary text-blanco "
 							onClick={() => {
@@ -83,7 +79,7 @@ const Sidebar = (props) => {
 							<RiPieChartLine className="text-3xl" />
 							<p>ADD PRODUCT</p>
 						</Link>
-					</li>
+					</li> */}
 					{/* <li className={`${seleccionado === 3 ? capa2 : capa}`}>
 						<Link
 							className={`${seleccionado === 3 ? boton2 : boton}`}

@@ -24,7 +24,7 @@ function App() {
 					</header>
 				</div>
 				<hr />
-				<main className="flex ">
+				<main className="flex items-center justify-center ">
 					<div className="">
 						<Routers />
 					</div>

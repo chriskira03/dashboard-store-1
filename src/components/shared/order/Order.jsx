@@ -20,7 +20,7 @@ const Order = ({ setSidebar, sidebar }) => {
 			<div
 				className={
 					sidebar
-						? 'h-screen bg-tertiary md:bg-primary fixed inset-y-0 md:w-80 w-full duration-300 transition-left z-30 left-0'
+						? 'h-screen bg-tertiary md:bg-primary fixed inset-y-0 md:w-[400px] w-full duration-300 transition-left z-30 left-0'
 						: 'h-screen bg-tertiary md:bg-primary fixed inset-y-0 w-64 duration-300 transition-left z-30 -left-80'
 				}>
 				<div className="flex items-center justify-between px-3">
