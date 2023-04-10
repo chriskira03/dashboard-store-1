@@ -12,6 +12,7 @@ const NewProduct = ({ handleClose }) => {
 		precio: '',
 		category: '',
 		imagen: '',
+		cantidad:''
 	});
 
 

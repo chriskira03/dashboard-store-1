@@ -120,9 +120,28 @@ export const eliminarOrden = (id, category) => {
 	};
 };
 export const reiniciarOrden = () => {
-	return (dispatch) => {
+	return (dispatch, getState) => {
+		// const orden = getState().userAlmacen.orden;
+		// const producto = getState().userAlmacen.producto;
+		// orden.forEach((o) => {
+		// 	const matchingProducts = producto.filter(
+		// 		(p) => p.id === o.id && p.category === o.category
+		// 	);
+		// 	matchingProducts.forEach((p) => {
+		// 		dispatch(
+		// 			actualizarProductos({
+		// 				id:p.id,
+		// 				nombre: p.nombre,
+		// 				precio: p.precio,
+		// 				descripcion: p.descripcion,
+		// 				category: p.category,
+		// 				imagen: p.imagen,
+		// 				cantidad: p.cantidad - o.cantidad,
+		// 			})
+		// 		);
+		// 	});
+		// });
 
-		
 		dispatch(setOrden([]));
 	};
 };
